@@ -10,7 +10,7 @@
 			$this->_length = $length;
 
 			$this->_con = $con->getCon();
-			$this->_time = $time;
+			$this->_time = $time*60;
 		}
 
 		public function generateToken(){
@@ -32,7 +32,7 @@
 		}
 
 		public function validToken($token){
-			$stmt = $this->_con->prepare("SELECT * FROM token WHERE token=? AND Minute(now())-Minute(date)<=?");
+			$stmt = $this->_con->prepare("SELECT * FROM token WHERE token=? AND TIME_TO_SEC(now())-TIME_TO_SEC(date)<=?");
 		    $stmt->bindParam(1,$token);
 		    $stmt->bindParam(2,$this->_time);
 		    $stmt->execute();

@@ -8,5 +8,5 @@
 	$framework = new Framework("Framework_PHP");
 
 	$framework->connection("localhost","clubedotreino","3307","root","usbw");
-	$framework->token(array("login"),50,1);
+	$framework->token(array("login"),50,30);
 	$framework->run();
