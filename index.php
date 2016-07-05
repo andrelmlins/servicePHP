@@ -1,12 +1,8 @@
 <?php
-	require_once('system/framework.php');
-	require_once('system/define.php');
-	require_once('system/system.php');
-	require_once('system/connection.php');
-	require_once('system/token.php');
+	require_once('servphp/servphp.php');
 
-	$framework = new Framework("Framework_PHP");
+	$servphp = new ServPHP("Framework_PHP");
 
-	$framework->connection("localhost","clubedotreino","3307","root","usbw");
-	$framework->token(array("login"),50,30);
-	$framework->run();
+	$servphp->connection("localhost","clubedotreino","3307","root","usbw");
+	//$servphp->token(array("login"),50,1);
+	$servphp->run();

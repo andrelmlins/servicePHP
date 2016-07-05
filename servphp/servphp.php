@@ -1,6 +1,6 @@
 <?php
 
-	class Framework{
+	class ServPHP{
 		private $_connection;
 		private $_directory;
 		private $_system;
@@ -8,11 +8,11 @@
 		private $_noToken;
 
 		function __construct($directory){
+			$this->config();
 			$this->_token = null;
 			$this->_connection = new Connection();
 			$this->_directory = $directory;
 			$this->_system = new System($directory,$this->_connection);
-			$this->config();
 		}
 
 		public function token($noToken=array(),$length,$time){
@@ -73,6 +73,10 @@
 
 		private function config(){
 			date_default_timezone_set('Brazil/East');
+			require_once('system/define.php');
+			require_once('system/system.php');
+			require_once('system/connection.php');
+			require_once('system/token.php');
 		}
 	}
 

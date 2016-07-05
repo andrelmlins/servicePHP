@@ -1,4 +1,0 @@
-
-
-#GET			/produtos/:id		produtos.get();
-#POST			/produtos/:id		consulta.produto();

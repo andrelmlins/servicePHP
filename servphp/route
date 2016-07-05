@@ -1,0 +1,6 @@
+
+
+#GET			/produtos/:id		produtos.get();
+#GET			/produtos			produtos.getAll();
+#POST			/produtos/:id		consulta.produto();
+#PUT 			/produtos/:id		produtos.update();

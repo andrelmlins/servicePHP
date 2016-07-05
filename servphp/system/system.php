@@ -13,10 +13,9 @@ class System{
 	}
 	
 	private function getRoute($metodo,$routeCurrent){
-		$archive = file("route");
+		$archive = file(dirname(__FILE__)."/../route");
 		$erro = new stdClass();
 		$routeCurrent = explode("/",$routeCurrent);
-
 		foreach($archive as $line){
 			$line = preg_replace("/( )+/", " ",preg_replace("/(\t)+/", " ", $line));
 			$line = explode(" ", $line);
@@ -24,7 +23,7 @@ class System{
 
 			if($line[0]=="#".$metodo){
 				$route = explode("/",$line[1]);
-				if(count($routeCurrent)!=count($route)) break;
+				if(count($routeCurrent)!=count($route)) continue;
 				else{
 					for($i=0;$i<count($route);$i++) {
 						$details->params = new stdClass();
