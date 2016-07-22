@@ -42,7 +42,7 @@
 
 		public function run(){
 			$erro = new StdClass();
-			if($this->_connection!=null){
+			if($this->_connection->getCon()!=null){
 				if($this->_token==null){
 					$this->_system->call();
 				}
@@ -77,6 +77,9 @@
 			require_once('system/system.php');
 			require_once('system/connection.php');
 			require_once('system/token.php');
+			require_once('system/archive.php');
+			header('Access-Control-Allow-Origin: *');
+			header('Access-Control-Allow-Methods: POST, GET');
 		}
 	}
 

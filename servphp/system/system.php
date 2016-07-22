@@ -22,28 +22,30 @@ class System{
 			$details = new stdClass();
 
 			if($line[0]=="#".$metodo){
+				$status = true;
 				$route = explode("/",$line[1]);
 				if(count($routeCurrent)!=count($route)) continue;
 				else{
+					$details->params = new stdClass();
+					$details->params->data = new stdClass();
 					for($i=0;$i<count($route);$i++) {
-						$details->params = new stdClass();
-						$details->params->data = new stdClass();
 						if(substr($route[$i],0,1)==":"){
 							$param = substr($route[$i], 1);
-							$details->params->data->$param = $routeCurrent[$i];	
+							$details->params->data->$param = $routeCurrent[$i];
 						}
 						else if($route[$i]!=$routeCurrent[$i]) {
-							$erro->erro = "Rota não existe";
-							echo json_encode($erro);
-							exit;
+							$status = false;
+							break;
 						}
 					}
 				}
-				$details->method = str_replace("#","",$line[0]);
-				$aux = explode(".",$line[2]);
-				$details->controller = $aux[0];
-				$details->method = $aux[1];
-				return $details;
+				if($status){
+					$details->method = str_replace("#","",$line[0]);
+					$aux = explode(".",$line[2]);
+					$details->controller = $aux[0];
+					$details->method = $aux[1];
+					return $details;
+				}
 			}
 		}
 		$erro->erro = "Rota não existe";

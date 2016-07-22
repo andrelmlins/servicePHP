@@ -1,6 +1,27 @@
 
 
-#GET			/produtos/:id		produtos.get();
-#GET			/produtos			produtos.getAll();
-#POST			/produtos/:id		consulta.produto();
-#PUT 			/produtos/:id		produtos.update();
+#GET			/postos								posto.getAll();
+#GET			/posto/:id							posto.get();
+#GET			/posto/rota/:estado					posto.getEstado();
+#GET			/posto/rota/:estado/:cidade			posto.getCidade();
+#GET			/posto/rota/:estado/:cidade/:bairro	posto.getBairro();
+
+#GET 			/estados 							posto.getEstados();
+#GET 			/estado/:estado						posto.getEstado();
+#GET 			/estado/:estado/cidades				posto.getCidadeporEstado();
+
+#GET			/bandeiras							bandeira.getAll();
+#GET			/bandeira/:id						bandeira.get();
+#GET			/bandeira/:id/postos				bandeira.getAll();
+
+#GET			/carros								carro.getAll();
+#GET			/carro/:id							carro.get();
+#GET			/carros/:combustivel				carro.getCombustivel();
+#GET			/marcas								carro.getMarcas();
+#GET			/marca/:marca						carro.getMarca();
+#GET			/marca/:id/carros					carro.getCarros();
+#GET			/marca/:id/carros/:combustivel		carro.getMarcaCombustivel();
+
+#GET 			/crawler/preco/posto				crawler.getPostos();
+#GET 			/crawler/preco/cidade				crawler.getCidades();
+#GET 			/crawler/preco/estado				crawler.getEstados();
